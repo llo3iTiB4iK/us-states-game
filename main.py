@@ -22,9 +22,6 @@ while len(states_guessed) < 50:
         pointer.write(answer, align="center")
 
     if answer == "Exit":
-        missing_states = []
-        for state in states.state.to_list():
-            if state not in states_guessed:
-                missing_states.append(state)
+        missing_states = [state for state in states.state.too_list() if state not in states_guessed]
         pd.DataFrame(missing_states).to_csv("missing_states.csv")
         break
